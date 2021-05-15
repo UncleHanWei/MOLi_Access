@@ -29,7 +29,8 @@ router.get('/', function(req, res, next) {
     console.log(formData);
     let message;
     // 檢查該使用者是否有加入資料表
-    if(!formData in memberList) {
+    if(!(formData in memberList)) {
+      console.log(123123);
       message = `未登記卡號 ${formData} 進入 MOLi`;
       req.app.get('bot').sendMessage(channel_ID, message);
       res.send(200);
