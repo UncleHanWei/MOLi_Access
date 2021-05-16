@@ -3,7 +3,6 @@ var router = express.Router();
 require('dotenv').config();
 
 let fs = require('fs');
-let memberList = JSON.parse(fs.readFileSync('memberList.json'));
 
 function checkArgv(formData) {
   // 如果傳來的參數數量不對且沒有 id 這個 key
@@ -17,6 +16,7 @@ function checkArgv(formData) {
 }
 
 router.get('/', function(req, res, next) {
+  let memberList = JSON.parse(fs.readFileSync('memberList.json'));
   let channel_ID = process.env.CHANNEL_ID;
   let formData = req.query;
   console.log(formData);
@@ -30,7 +30,6 @@ router.get('/', function(req, res, next) {
     let message;
     // 檢查該使用者是否有加入資料表
     if(!(formData in memberList)) {
-      console.log(123123);
       message = `未登記卡號 ${formData} 進入 MOLi`;
       req.app.get('bot').sendMessage(channel_ID, message);
       res.send(200);

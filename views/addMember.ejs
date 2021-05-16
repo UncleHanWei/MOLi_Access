@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <% include ./models/bs_css.ejs %>
+    <title>
+      <%= title %>
+    </title>
+</head>
+
+<body>
+  <h1 class="text-center">勤洗手、戴口罩</h1>
+  <h3 class="text-center">防疫工作你我有責</h3>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-4 m-auto">
+
+        <form id="memberForm">
+          <div class="mb-3">
+            <label for="cid" class="form-label">卡號</label>
+            <input type="text" class="form-control" id="cid" name="cid" aria-describedby="swipeCard">
+            <div id="swipeCard" class="form-text">刷有 RFID 的卡片，卡號會自動填入</div>
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">姓名</label>
+            <input type="text" class="form-control" id="name" name="name">
+          </div>
+          <div class="mb-3">
+            <label for="sid" class="form-label">學號</label>
+            <input type="text" class="form-control" id="sid" name="sid" placeholder="(optional)">
+          </div>
+
+          <button type="button" class="btn btn-primary" onclick="check()">Submit</button>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+  <% include ./models/bs_js.ejs %>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/javascripts/addMember.js"></script>
+</body>
+
+</html>
